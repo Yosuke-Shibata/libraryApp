@@ -4,8 +4,6 @@
 package yoshibata.exam.quocard.libraryApp.JOOQ.tables.records;
 
 
-import java.time.LocalDateTime;
-
 import org.jooq.Record1;
 import org.jooq.impl.UpdatableRecordImpl;
 
@@ -48,34 +46,6 @@ public class AuthorRecord extends UpdatableRecordImpl<AuthorRecord> {
         return (String) get(1);
     }
 
-    /**
-     * Setter for <code>library_app_schema.author.created_at</code>.
-     */
-    public void setCreatedAt(LocalDateTime value) {
-        set(2, value);
-    }
-
-    /**
-     * Getter for <code>library_app_schema.author.created_at</code>.
-     */
-    public LocalDateTime getCreatedAt() {
-        return (LocalDateTime) get(2);
-    }
-
-    /**
-     * Setter for <code>library_app_schema.author.updated_at</code>.
-     */
-    public void setUpdatedAt(LocalDateTime value) {
-        set(3, value);
-    }
-
-    /**
-     * Getter for <code>library_app_schema.author.updated_at</code>.
-     */
-    public LocalDateTime getUpdatedAt() {
-        return (LocalDateTime) get(3);
-    }
-
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -99,13 +69,11 @@ public class AuthorRecord extends UpdatableRecordImpl<AuthorRecord> {
     /**
      * Create a detached, initialised AuthorRecord
      */
-    public AuthorRecord(Integer id, String name, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public AuthorRecord(Integer id, String name) {
         super(Author.AUTHOR);
 
         setId(id);
         setName(name);
-        setCreatedAt(createdAt);
-        setUpdatedAt(updatedAt);
         resetChangedOnNotNull();
     }
 }

@@ -4,7 +4,6 @@
 package yoshibata.exam.quocard.libraryApp.JOOQ.tables;
 
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 
 import org.jooq.Condition;
@@ -66,16 +65,6 @@ public class Author extends TableImpl<AuthorRecord> {
      * The column <code>library_app_schema.author.name</code>.
      */
     public final TableField<AuthorRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(255).nullable(false), this, "");
-
-    /**
-     * The column <code>library_app_schema.author.created_at</code>.
-     */
-    public final TableField<AuthorRecord, LocalDateTime> CREATED_AT = createField(DSL.name("created_at"), SQLDataType.LOCALDATETIME(6).nullable(false).defaultValue(DSL.field(DSL.raw("CURRENT_TIMESTAMP"), SQLDataType.LOCALDATETIME)), this, "");
-
-    /**
-     * The column <code>library_app_schema.author.updated_at</code>.
-     */
-    public final TableField<AuthorRecord, LocalDateTime> UPDATED_AT = createField(DSL.name("updated_at"), SQLDataType.LOCALDATETIME(6), this, "");
 
     private Author(Name alias, Table<AuthorRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);

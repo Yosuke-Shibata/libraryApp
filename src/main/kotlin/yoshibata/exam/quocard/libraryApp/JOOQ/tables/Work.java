@@ -4,7 +4,6 @@
 package yoshibata.exam.quocard.libraryApp.JOOQ.tables;
 
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -67,16 +66,6 @@ public class Work extends TableImpl<WorkRecord> {
      * The column <code>library_app_schema.work.author_id</code>.
      */
     public final TableField<WorkRecord, Integer> AUTHOR_ID = createField(DSL.name("author_id"), SQLDataType.INTEGER.nullable(false), this, "");
-
-    /**
-     * The column <code>library_app_schema.work.created_at</code>.
-     */
-    public final TableField<WorkRecord, LocalDateTime> CREATED_AT = createField(DSL.name("created_at"), SQLDataType.LOCALDATETIME(6).nullable(false).defaultValue(DSL.field(DSL.raw("CURRENT_TIMESTAMP"), SQLDataType.LOCALDATETIME)), this, "");
-
-    /**
-     * The column <code>library_app_schema.work.updated_at</code>.
-     */
-    public final TableField<WorkRecord, LocalDateTime> UPDATED_AT = createField(DSL.name("updated_at"), SQLDataType.LOCALDATETIME(6), this, "");
 
     private Work(Name alias, Table<WorkRecord> aliased) {
         this(alias, aliased, (Field<?>[]) null, null);

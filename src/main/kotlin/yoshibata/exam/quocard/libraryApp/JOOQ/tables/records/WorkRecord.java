@@ -4,8 +4,6 @@
 package yoshibata.exam.quocard.libraryApp.JOOQ.tables.records;
 
 
-import java.time.LocalDateTime;
-
 import org.jooq.Record2;
 import org.jooq.impl.UpdatableRecordImpl;
 
@@ -48,34 +46,6 @@ public class WorkRecord extends UpdatableRecordImpl<WorkRecord> {
         return (Integer) get(1);
     }
 
-    /**
-     * Setter for <code>library_app_schema.work.created_at</code>.
-     */
-    public void setCreatedAt(LocalDateTime value) {
-        set(2, value);
-    }
-
-    /**
-     * Getter for <code>library_app_schema.work.created_at</code>.
-     */
-    public LocalDateTime getCreatedAt() {
-        return (LocalDateTime) get(2);
-    }
-
-    /**
-     * Setter for <code>library_app_schema.work.updated_at</code>.
-     */
-    public void setUpdatedAt(LocalDateTime value) {
-        set(3, value);
-    }
-
-    /**
-     * Getter for <code>library_app_schema.work.updated_at</code>.
-     */
-    public LocalDateTime getUpdatedAt() {
-        return (LocalDateTime) get(3);
-    }
-
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -99,13 +69,11 @@ public class WorkRecord extends UpdatableRecordImpl<WorkRecord> {
     /**
      * Create a detached, initialised WorkRecord
      */
-    public WorkRecord(Integer bookId, Integer authorId, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public WorkRecord(Integer bookId, Integer authorId) {
         super(Work.WORK);
 
         setBookId(bookId);
         setAuthorId(authorId);
-        setCreatedAt(createdAt);
-        setUpdatedAt(updatedAt);
         resetChangedOnNotNull();
     }
 }
