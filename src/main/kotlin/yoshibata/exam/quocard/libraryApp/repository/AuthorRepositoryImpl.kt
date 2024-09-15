@@ -4,6 +4,7 @@ import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.jooq.exception.NoDataFoundException
 import org.springframework.stereotype.Repository
+import yoshibata.exam.quocard.libraryApp.controller.AuthorDto
 import yoshibata.exam.quocard.libraryApp.jooq.Tables.AUTHOR
 import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 
@@ -16,13 +17,14 @@ class AuthorRepositoryImpl(private val dslContext: DSLContext) : AuthorRepositor
         if (result !== null) return result else throw NoDataFoundException()
     }
 
-    override fun create(name: String): Int {
-        val result = this.dslContext.insertInto(AUTHOR, AUTHOR.NAME).values(name).returningResult(AUTHOR.ID).fetchOne()
+    override fun create(dto: AuthorDto): Int {
+        val result =
+            this.dslContext.insertInto(AUTHOR, AUTHOR.NAME).values(dto.name).returningResult(AUTHOR.ID).fetchOne()
         if (result !== null) return result.value1() else throw DataAccessException("Insert failed.")
     }
 
-    override fun update(id: Int, name: String) {
-        this.dslContext.update(AUTHOR).set(AUTHOR.NAME, name).where(AUTHOR.ID.eq(id)).execute()
+    override fun update(id: Int, dto: AuthorDto) {
+        this.dslContext.update(AUTHOR).set(AUTHOR.NAME, dto.name).where(AUTHOR.ID.eq(id)).execute()
     }
 
     override fun search(param: String): List<AuthorRecord> {
