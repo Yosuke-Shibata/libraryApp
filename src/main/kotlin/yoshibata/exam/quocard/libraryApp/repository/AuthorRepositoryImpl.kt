@@ -4,7 +4,6 @@ import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.jooq.exception.NoDataFoundException
 import org.springframework.stereotype.Repository
-import yoshibata.exam.quocard.libraryApp.controller.AuthorDto
 import yoshibata.exam.quocard.libraryApp.jooq.Tables.AUTHOR
 import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 

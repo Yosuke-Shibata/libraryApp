@@ -14,13 +14,14 @@ class BookRepositoryImpl(private val dslContext: DSLContext) : BookRepository {
         if (result !== null) return result else throw NoDataFoundException()
     }
 
-    override fun create(title: String): Int {
-        val result = this.dslContext.insertInto(BOOK, BOOK.TITLE).values(title).returningResult(BOOK.ID).fetchOne()
+    override fun create(bookDto: BookDto): Int {
+        val result =
+            this.dslContext.insertInto(BOOK, BOOK.TITLE).values(bookDto.title).returningResult(BOOK.ID).fetchOne()
         if (result !== null) return result.value1() else throw DataAccessException("Insert failed.")
     }
 
-    override fun update(id: Int, title: String) {
-        this.dslContext.update(BOOK).set(BOOK.TITLE, title).where(BOOK.ID.eq(id)).execute()
+    override fun update(id: Int, bookDto: BookDto) {
+        this.dslContext.update(BOOK).set(BOOK.TITLE, bookDto.title).where(BOOK.ID.eq(id)).execute()
     }
 
     override fun search(param: String): List<BookRecord> {

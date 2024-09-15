@@ -1,6 +1,5 @@
 package yoshibata.exam.quocard.libraryApp.repository
 
-import yoshibata.exam.quocard.libraryApp.controller.AuthorDto
 import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 
 interface AuthorRepository {
@@ -9,3 +8,5 @@ interface AuthorRepository {
     fun update(id: Int, dto: AuthorDto)
     fun search(param: String): List<AuthorRecord>
 }
+
+data class AuthorDto(val name: String)

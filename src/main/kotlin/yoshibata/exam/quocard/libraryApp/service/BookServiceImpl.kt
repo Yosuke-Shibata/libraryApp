@@ -1,27 +1,31 @@
 package yoshibata.exam.quocard.libraryApp.service
 
 import org.springframework.stereotype.Service
+import yoshibata.exam.quocard.libraryApp.jooq.tables.records.BookRecord
+import yoshibata.exam.quocard.libraryApp.repository.BookDto
 import yoshibata.exam.quocard.libraryApp.repository.BookRepository
+import yoshibata.exam.quocard.libraryApp.repository.WorkRepository
 
 @Service
-class BookServiceImpl(private val bookRep: BookRepository) : BookService {
+class BookServiceImpl(private val bookRep: BookRepository, private val workRep: WorkRepository) : BookService {
     override fun get(id: Int): BookInfo {
         val bookResult = this.bookRep.find(id)
-        return BookInfo(id, bookResult.title)
+        val workResult = this.workRep.findAuthorByBookId(id)
+        return BookInfo(id, bookResult.title, workResult.map { item -> item.name })
     }
 
-    override fun post(title: String): Int {
-        return this.bookRep.create(title)
+    override fun post(bookDto: BookDto): Int {
+        val bookId = this.bookRep.create(bookDto)
+        bookDto.authorIds.forEach { authorId -> this.workRep.create(authorId, bookId) }
+        return bookId
     }
 
-    override fun put(id: Int, title: String) {
-        this.bookRep.update(id, title)
+    override fun put(id: Int, bookDto: BookDto) {
+        this.bookRep.update(id, bookDto)
     }
 
-    override fun search(param: String): List<BookInfo> {
-        val bookResults = this.bookRep.search(param)
-        return bookResults.map { item -> BookInfo(item.id, item.title) }
+    override fun search(param: String): List<BookRecord> {
+        return this.bookRep.search(param)
     }
 }
 
-data class BookInfo(val id: Int, val title: String)

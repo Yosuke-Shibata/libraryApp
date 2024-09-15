@@ -3,21 +3,16 @@ package yoshibata.exam.quocard.libraryApp.controller
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
+import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
+import yoshibata.exam.quocard.libraryApp.repository.AuthorDto
 import yoshibata.exam.quocard.libraryApp.service.AuthorInfo
 import yoshibata.exam.quocard.libraryApp.service.AuthorService
-import yoshibata.exam.quocard.libraryApp.service.BookInfo
-import yoshibata.exam.quocard.libraryApp.service.WorkService
 
 @RestController
-class AuthorControllerImpl(private val authorService: AuthorService, private val workService: WorkService) :
+class AuthorControllerImpl(private val authorService: AuthorService) :
     AuthorController {
     override fun getAuthor(authorId: Int): ResponseEntity<AuthorInfo> {
         val result = this.authorService.get(authorId)
-        return ResponseEntity(result, HttpStatus.OK)
-    }
-
-    override fun getAuthorWork(authorId: Int): ResponseEntity<List<BookInfo>> {
-        val result = this.workService.getBooks(authorId)
         return ResponseEntity(result, HttpStatus.OK)
     }
 
@@ -30,6 +25,9 @@ class AuthorControllerImpl(private val authorService: AuthorService, private val
         this.authorService.put(authorId, authorDto)
         return ResponseEntity(HttpStatus.OK)
     }
-}
 
-data class AuthorDto(val name: String)
+    override fun searchAuthor(name: String): ResponseEntity<List<AuthorRecord>> {
+        val results = this.authorService.search(name)
+        return ResponseEntity(results, HttpStatus.OK)
+    }
+}
