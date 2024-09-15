@@ -1,14 +1,15 @@
 package yoshibata.exam.quocard.libraryApp.repository
 
-import yoshibata.exam.quocard.libraryApp.JOOQ.tables.records.WorkRecord
+import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
+import yoshibata.exam.quocard.libraryApp.jooq.tables.records.BookRecord
 
 interface WorkRepository {
-    fun findByAuthorId(authorId: Int): List<WorkRecord>
+    fun findBookByAuthorId(authorId: Int): List<BookRecord>
 
-    fun findByBookId(bookId: Int): List<WorkRecord>
+    fun findAuthorByBookId(bookId: Int): List<AuthorRecord>
 
-    fun createWork(
+    fun create(
         authorId: Int,
         bookId: Int,
-    ): Int
+    )
 }
