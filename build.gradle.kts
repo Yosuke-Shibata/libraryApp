@@ -3,7 +3,6 @@ plugins {
     kotlin("plugin.spring") version "1.9.25"
     id("org.springframework.boot") version "3.3.3"
     id("io.spring.dependency-management") version "1.1.6"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
     id("org.jooq.jooq-codegen-gradle") version "3.19.11"
 }
 
@@ -54,8 +53,12 @@ kotlin {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+sourceSets.main {
+    java.srcDirs("build/generated-sources/jooq")
 
+}
 jooq {
+    version = "3.19.11"
     configuration {
         jdbc {
             driver = "org.postgresql.Driver"
@@ -68,10 +71,10 @@ jooq {
                 name = "org.jooq.meta.postgres.PostgresDatabase"
                 inputSchema = "library_app_schema"
             }
-            target {
-                packageName = "yoshibata.exam.quocard.libraryApp.jooq"
-                directory = "src/main/kotlin"
-            }
+//            target {
+//                packageName = "yoshibata.exam.quocard.libraryApp.jooq"
+//                directory = "src/main/kotlin"
+//            }
         }
     }
 }

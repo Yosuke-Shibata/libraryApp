@@ -1,6 +1,6 @@
 package yoshibata.exam.quocard.libraryApp.service
 
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
+import org.jooq.generated.tables.records.AuthorRecord
 import yoshibata.exam.quocard.libraryApp.repository.AuthorDto
 
 interface AuthorService {

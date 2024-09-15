@@ -1,7 +1,7 @@
 package yoshibata.exam.quocard.libraryApp.service
 
+import org.jooq.generated.tables.records.AuthorRecord
 import org.springframework.stereotype.Service
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 import yoshibata.exam.quocard.libraryApp.repository.AuthorDto
 import yoshibata.exam.quocard.libraryApp.repository.AuthorRepository
 import yoshibata.exam.quocard.libraryApp.repository.WorkRepository

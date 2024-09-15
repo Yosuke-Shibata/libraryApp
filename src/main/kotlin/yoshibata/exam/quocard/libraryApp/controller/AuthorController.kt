@@ -1,9 +1,9 @@
 package yoshibata.exam.quocard.libraryApp.controller
 
+import org.jooq.generated.tables.records.AuthorRecord
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 import yoshibata.exam.quocard.libraryApp.repository.AuthorDto
 import yoshibata.exam.quocard.libraryApp.service.AuthorInfo
 

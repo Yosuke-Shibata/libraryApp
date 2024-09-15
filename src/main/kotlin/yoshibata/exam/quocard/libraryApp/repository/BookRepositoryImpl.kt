@@ -3,9 +3,9 @@ package yoshibata.exam.quocard.libraryApp.repository
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.jooq.exception.NoDataFoundException
+import org.jooq.generated.Tables.BOOK
+import org.jooq.generated.tables.records.BookRecord
 import org.springframework.stereotype.Repository
-import yoshibata.exam.quocard.libraryApp.jooq.Tables.BOOK
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.BookRecord
 
 @Repository
 class BookRepositoryImpl(private val dslContext: DSLContext) : BookRepository {

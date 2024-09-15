@@ -1,6 +1,6 @@
 package yoshibata.exam.quocard.libraryApp.repository
 
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
+import org.jooq.generated.tables.records.AuthorRecord
 
 interface AuthorRepository {
     fun find(id: Int): AuthorRecord

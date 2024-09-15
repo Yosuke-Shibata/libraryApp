@@ -1,10 +1,10 @@
 package yoshibata.exam.quocard.libraryApp.repository
 
 import org.jooq.DSLContext
+import org.jooq.generated.Tables.*
+import org.jooq.generated.tables.records.AuthorRecord
+import org.jooq.generated.tables.records.BookRecord
 import org.springframework.stereotype.Repository
-import yoshibata.exam.quocard.libraryApp.jooq.Tables.*
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.BookRecord
 
 @Repository
 class WorkRepositoryImpl(private val dslContext: DSLContext) : WorkRepository {

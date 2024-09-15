@@ -1,6 +1,6 @@
 package yoshibata.exam.quocard.libraryApp.service
 
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.BookRecord
+import org.jooq.generated.tables.records.BookRecord
 import yoshibata.exam.quocard.libraryApp.repository.BookDto
 
 interface BookService {

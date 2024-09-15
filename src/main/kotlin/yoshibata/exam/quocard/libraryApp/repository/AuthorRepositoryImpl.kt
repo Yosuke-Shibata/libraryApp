@@ -3,9 +3,9 @@ package yoshibata.exam.quocard.libraryApp.repository
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.jooq.exception.NoDataFoundException
+import org.jooq.generated.Tables.AUTHOR
+import org.jooq.generated.tables.records.AuthorRecord
 import org.springframework.stereotype.Repository
-import yoshibata.exam.quocard.libraryApp.jooq.Tables.AUTHOR
-import yoshibata.exam.quocard.libraryApp.jooq.tables.records.AuthorRecord
 
 
 @Repository
