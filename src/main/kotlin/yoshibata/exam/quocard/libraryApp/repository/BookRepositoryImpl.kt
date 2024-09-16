@@ -25,6 +25,6 @@ class BookRepositoryImpl(private val dslContext: DSLContext) : BookRepository {
     }
 
     override fun search(param: String): List<BookRecord> {
-        return this.dslContext.selectFrom(BOOK).where(BOOK.TITLE.like(param)).fetch()
+        return this.dslContext.selectFrom(BOOK).where(BOOK.TITLE.like("%${param}%")).fetch()
     }
 }

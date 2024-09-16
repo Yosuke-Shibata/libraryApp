@@ -1,6 +1,5 @@
 package yoshibata.exam.quocard.libraryApp.service
 
-import org.jooq.generated.tables.records.BookRecord
 import org.springframework.stereotype.Service
 import yoshibata.exam.quocard.libraryApp.repository.BookDto
 import yoshibata.exam.quocard.libraryApp.repository.BookRepository
@@ -24,8 +23,9 @@ class BookServiceImpl(private val bookRep: BookRepository, private val workRep: 
         this.bookRep.update(id, bookDto)
     }
 
-    override fun search(param: String): List<BookRecord> {
-        return this.bookRep.search(param)
+    override fun search(param: String): List<SearchBookInfo> {
+        val results = this.bookRep.search(param)
+        return results.map { item -> SearchBookInfo(item.id, item.title) }
     }
 }
 

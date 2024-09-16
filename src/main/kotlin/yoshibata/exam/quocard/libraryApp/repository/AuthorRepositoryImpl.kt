@@ -27,6 +27,6 @@ class AuthorRepositoryImpl(private val dslContext: DSLContext) : AuthorRepositor
     }
 
     override fun search(param: String): List<AuthorRecord> {
-        return this.dslContext.selectFrom(AUTHOR).where(AUTHOR.NAME.like(param)).fetch()
+        return this.dslContext.selectFrom(AUTHOR).where(AUTHOR.NAME.like("%${param}%")).fetch()
     }
 }

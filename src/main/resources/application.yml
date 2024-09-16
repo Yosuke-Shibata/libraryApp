@@ -1,6 +1,9 @@
 spring:
   application:
     name: libraryApp
+    jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+      time-zone: Asia/Tokyo
   # DB settings
   datasource:
     username: postgres

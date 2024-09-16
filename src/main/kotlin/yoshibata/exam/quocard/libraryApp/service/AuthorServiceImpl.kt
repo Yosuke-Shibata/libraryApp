@@ -1,6 +1,5 @@
 package yoshibata.exam.quocard.libraryApp.service
 
-import org.jooq.generated.tables.records.AuthorRecord
 import org.springframework.stereotype.Service
 import yoshibata.exam.quocard.libraryApp.repository.AuthorDto
 import yoshibata.exam.quocard.libraryApp.repository.AuthorRepository
@@ -22,7 +21,8 @@ class AuthorServiceImpl(private val authorRep: AuthorRepository, private val wor
         this.authorRep.update(id, dto)
     }
 
-    override fun search(param: String): List<AuthorRecord> {
-        return this.authorRep.search(param)
+    override fun search(param: String): List<SearchAuthorInfo> {
+        val results = this.authorRep.search(param)
+        return results.map { item -> SearchAuthorInfo(item.id, item.name) }
     }
 }

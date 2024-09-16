@@ -55,8 +55,8 @@ tasks.withType<Test> {
 }
 sourceSets.main {
     java.srcDirs("build/generated-sources/jooq")
-
 }
+
 jooq {
     version = "3.19.11"
     configuration {
@@ -71,10 +71,6 @@ jooq {
                 name = "org.jooq.meta.postgres.PostgresDatabase"
                 inputSchema = "library_app_schema"
             }
-//            target {
-//                packageName = "yoshibata.exam.quocard.libraryApp.jooq"
-//                directory = "src/main/kotlin"
-//            }
         }
     }
 }
